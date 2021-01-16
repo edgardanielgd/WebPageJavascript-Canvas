@@ -11,7 +11,7 @@
 <canvas style="background-color:white" id="myCanvas" width="800" height="600" style="border:1px solid #000000"></canvas>
 </div>
 <p id="Puntaje" style="background-color:white;color:black;font-size:25px">0000000000</p>
-<div style="display:None;">
+<div>
 
     <img id="NatyDerecha" src="naty1.gif" width="50" height="50">
     <img id="NatyIzquierda" src="naty2.gif" width="50" height="50">
@@ -20,9 +20,9 @@
     <img id="Hueco" src="hueco.png" width="50" height="50">
     <img id="Hambur" src="anvorguesa.gif" width="50" height="50">
     <img id="Fresa" src="fresa.gif" width="50" height="50">
-    <p id="Nivel1"><?php echo file_get_contents("https://natygift.000webhostapp.com/niveles/nivel1.txt")?></p>
-    <p id="Nivel2"><?php echo file_get_contents("https://natygift.000webhostapp.com/niveles/nivel2.txt")?></p>
-    <p id="Nivel3"><?php echo file_get_contents("https://natygift.000webhostapp.com/niveles/nivel3.txt")?></p>
+    <p id="Nivel1"><?php echo file_get_contents("niveles/nivel1.txt")?></p>
+    <p id="Nivel2"><?php echo file_get_contents("niveles/nivel2.txt")?></p>
+    <p id="Nivel3"><?php echo file_get_contents("niveles/nivel3.txt")?></p>
 </div>
 
 <script>
@@ -103,7 +103,7 @@ function actualizarPuntaje(nuevo){
     while(cadena.length<largo)cadena="0"+cadena;
     puntaje.innerHTML=cadena;
     if(puntos>=10000 && !pasa){
-        matriz=LeerMapa(Nivel1.innerHTML);
+        matriz=LeerMapa(nivel1.innerHTML);
         comidas=[];
         CrearComida();
         CrearComida();
@@ -116,7 +116,7 @@ function actualizarPuntaje(nuevo){
         pasa=true;
     }
     if(puntos>=20000 && !pasa2){
-        matriz=LeerMapa(Nivel3.innerHTML);
+        matriz=LeerMapa(nivel3.innerHTML);
         comidas=[];
         CrearComida();
         CrearComida();
@@ -133,7 +133,6 @@ function actualizarPuntaje(nuevo){
     }
 }
 function Mapear(matriz){
-    alert(matriz);
     for(var i=0;i<matriz.length;i++){
         for(var j=0;j<matriz[i].length;j++){
             if(matriz[i][j]==0){
@@ -201,6 +200,8 @@ function ResetearComidaMov(){
     tmComida=setTimeout(ResetearComidaMov,10000);
 }
 var nivel1=document.getElementById("Nivel1");
+var nivel2=document.getElementById("Nivel2");
+var nivel3=document.getElementById("Nivel3");
 var canvas = document.getElementById("myCanvas");
 var NatyD=document.getElementById("NatyDerecha");
 var NatyI=document.getElementById("NatyIzquierda");
@@ -229,7 +230,7 @@ var tmComida="";
 var pasa=false;
 var pasa2=false;
 var pasa3=false;
-matriz=LeerMapa(Nivel2.innerHTML);
+matriz=LeerMapa(nivel2.innerHTML);
 CrearComida();
 CrearComida();
 CrearComida();
